@@ -1,0 +1,27 @@
+{
+  "ts-node": {
+    // Otherwise, ts-node does not see "declare global"
+    // https://stackoverflow.com/questions/51610583/ts-node-ignores-d-ts-files-while-tsc-successfully-compiles-the-project
+    "files": true
+  },
+  "include": [".eslintrc.js", ".prettierrc.js", "webpack.config.ts", "tsconfig.app.json", "tsconfig.node.json", "./config", "./src/types/declarations/ts-reset.d.ts"],
+  "compilerOptions": {
+    "types": ["webpack", "node"],
+    "composite": true,
+    "module": "CommonJS",
+    "outDir": "dist",
+    "target": "ES5",
+    "baseUrl": "./",
+    "allowJs": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "skipLibCheck": true
+  }
+}

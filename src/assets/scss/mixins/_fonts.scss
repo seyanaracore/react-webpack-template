@@ -1,0 +1,43 @@
+@use "sass:map";
+@use "sass:string";
+@use "sass:list";
+@use '../functions/str-replace' as *;
+
+@mixin font-face($name, $file-path, $weight: null, $style: null, $exts: eot woff2 woff ttf svg, $display: null) {
+  $src: null;
+  $extmods: (
+    eot: "?",
+    svg: "#" + str-replace($name, " ", "_")
+  );
+  $formats: (
+    otf: "opentype",
+    ttf: "truetype"
+  );
+
+  @each $ext in $exts {
+    $extmod: if(map.has-key($extmods, $ext), $ext + map.get($extmods, $ext), $ext);
+    $format: if(map.has-key($formats, $ext), map.get($formats, $ext), $ext);
+    $src: list.append($src, url(quote($file-path + "." + $extmod)) format(string.quote($format)), comma);
+  }
+
+  @font-face {
+    font-family: string.quote($name);
+    font-weight: $weight;
+    font-style: $style;
+    font-display: $display;
+    src: $src;
+  }
+}
+
+/**
+ * Примеры использования:
+ * - @include font(400, 12px, 18px);
+ * - @include font(null, 12px, 18px);
+ * - @include font(null, 12px, 1.5, Helvetica);
+ */
+@mixin font($weight: null, $size: null, $lh: null, $type: null) {
+  font-family: $type;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: $lh;
+}

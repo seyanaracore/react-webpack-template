@@ -1,0 +1,28 @@
+{
+  "include": ["src"],
+  "compilerOptions": {
+    "composite": true,
+    "target": "ES5",
+    "jsx": "react-jsx",
+    "module": "esnext",
+    "outDir": "dist",
+    "moduleResolution": "node",
+    "baseUrl": "./",
+    "allowJs": true,
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictPropertyInitialization": true,
+    "strictFunctionTypes": true,
+    "skipLibCheck": true,
+    "lib": ["esnext", "dom", "dom.iterable", "scripthost"]
+  }
+}

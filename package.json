@@ -1,0 +1,98 @@
+{
+  "name": "react-webpack-template",
+  "scripts": {
+    "webpack": "cross-env TS_NODE_PROJECT=\"tsconfig.node.json\" webpack",
+    "build": "npm run webpack -- --env mode=production",
+    "start": "npm run webpack serve -- --env mode=development",
+    "analyze": "npm run build -- analyzer=true",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:css": "stylelint 'src/**/*.{css,scss}'",
+    "type-check": "tsc --project tsconfig.app.json --noEmit && :",
+    "type-check:node": "tsc --project tsconfig.node.json --noEmit",
+    "prepare": "husky"
+  },
+  "devDependencies": {
+    "@pmmmwh/react-refresh-webpack-plugin": "^0.5.11",
+    "@svgr/webpack": "^8.1.0",
+    "@swc/core": "^1.4.11",
+    "@total-typescript/ts-reset": "^0.5.1",
+    "@types/eslint": "^8.44.8",
+    "@types/node": "20",
+    "@types/postcss-html": "^1",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@types/react-refresh": "^0",
+    "@types/webpack": "^5.28.5",
+    "@types/webpack-bundle-analyzer": "^4.6.3",
+    "@types/webpack-dev-server": "^4.7.2",
+    "@typescript-eslint/eslint-plugin": "^6.14.0",
+    "@typescript-eslint/parser": "^6.14.0",
+    "autoprefixer": "^10.4.16",
+    "browserslist": "^4.23.0",
+    "chalk": "^4.1.2",
+    "core-js": "^3.36.1",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.8.1",
+    "eslint": "^8.55.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.0",
+    "eslint-plugin-jsx-a11y": "^6.8.0",
+    "eslint-plugin-prettier": "^5.0.1",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.5",
+    "html-webpack-plugin": "^5.5.3",
+    "husky": "^9.0.11",
+    "json5": "^2.2.3",
+    "lint-staged": "^15.2.2",
+    "mini-css-extract-plugin": "^2.7.6",
+    "postcss": "^8.4.32",
+    "postcss-loader": "^7.3.3",
+    "postcss-viewport-unit-fallback": "^1.0.1",
+    "prettier": "^3.1.0",
+    "react-refresh": "^0.14.0",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.3.2",
+    "style-loader": "^3.3.3",
+    "stylelint": "^15.11.0",
+    "stylelint-config-clean-order": "^5.2.0",
+    "stylelint-config-standard-scss": "^11.1.0",
+    "stylelint-order": "^6.0.4",
+    "stylelint-scss": "^5.3.2",
+    "swc-loader": "^0.2.6",
+    "ts-node": "^10.9.1",
+    "tsconfig-paths": "^4.2.0",
+    "type-fest": "^4.15.0",
+    "typescript": "5.3.2",
+    "webpack": "^5.89.0",
+    "webpack-bundle-analyzer": "^4.10.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  },
+  "dependencies": {
+    "classnames": "^2.3.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.1"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "eslint --max-warnings 0",
+      "npm run type-check"
+    ],
+    "*.{scss,css}": [
+      "stylelint"
+    ]
+  },
+  "volta": {
+    "node": "20.10.0",
+    "npm": "10.5.0"
+  },
+  "engines": {
+    "node": "20.10.0",
+    "npm": "10.5.0"
+  }
+}
