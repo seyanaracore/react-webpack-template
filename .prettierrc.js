@@ -1,3 +1,5 @@
+// @ts-check
+
 /** @type {import("prettier").Options} */
 const config = {
   printWidth: 100,

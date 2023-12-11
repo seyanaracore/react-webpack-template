@@ -35,6 +35,7 @@ const getBuildRules = (options: BuildOptions): NonNullable<Configuration['module
           },
         },
       },
+      'postcss-loader',
       // Compiles Sass to CSS
       'sass-loader',
     ],
