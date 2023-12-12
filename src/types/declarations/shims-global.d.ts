@@ -1,5 +1,5 @@
-import { GlobalEnv } from '@build/types';
+import type { GlobalEnv } from '../../../config/build/types';
 
 declare global {
-  declare const __APP_MODE__: GlobalEnv['__APP_MODE__'];
+  const APP_MODE: GlobalEnv['APP_MODE'];
 }

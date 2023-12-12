@@ -1,6 +1,6 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildOptions } from './types';
-import { Configuration } from 'webpack';
+import type { Configuration } from 'webpack';
+import type { BuildOptions } from './types';
 
 const getBuildRules = (options: BuildOptions): NonNullable<Configuration['module']>['rules'] => {
   const isProduction = options.mode === 'production';

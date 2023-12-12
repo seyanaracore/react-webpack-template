@@ -1,13 +1,12 @@
-import { Configuration } from 'webpack';
-import { BuildOptions } from './types';
+import type { Configuration } from 'webpack';
+import type { BuildOptions } from './types';
+import { resolveExtensions } from './resolveExtensions';
 
-const getBuildResolvers = (options: BuildOptions): Configuration['resolve'] => {
-  return {
-    extensions: ['.ts', '.js', '.tsx', '.json'],
-    alias: {
-      '@': options.paths.src,
-    },
-  };
-};
+const getBuildResolvers = (options: BuildOptions): Configuration['resolve'] => ({
+  extensions: resolveExtensions,
+  alias: {
+    '@': options.paths.src,
+  },
+});
 
 export default getBuildResolvers;

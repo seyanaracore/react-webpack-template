@@ -1,17 +1,19 @@
 import MiniCssExtractPlugin from 'mini-css-extract-plugin';
-import { BuildOptions, GlobalEnv } from './types';
-import { Configuration } from 'webpack';
+import type { Configuration } from 'webpack';
+import { DefinePlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { EsbuildPlugin } from 'esbuild-loader';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
+import type { BuildOptions, GlobalEnv } from './types';
 
 const getBuildPlugins = (options: BuildOptions): Configuration['plugins'] => {
   const isProduction = options.mode === 'production';
   const isDevelopment = !isProduction;
 
   const globalEnv: Record<keyof GlobalEnv, string> = {
-    __APP_MODE__: JSON.stringify(options.mode),
+    APP_MODE: JSON.stringify(options.mode),
   };
 
   const plugins: Configuration['plugins'] = [
@@ -22,9 +24,10 @@ const getBuildPlugins = (options: BuildOptions): Configuration['plugins'] => {
 
     // https://github.com/privatenumber/esbuild-loader
     new EsbuildPlugin({
-      define: globalEnv,
       css: true, // Apply minification to CSS assets
     }),
+
+    new DefinePlugin(globalEnv),
   ];
 
   if (options.analyzer) plugins.push(new BundleAnalyzerPlugin());

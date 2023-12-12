@@ -1,6 +1,6 @@
-import path from 'path';
-import getBuildWebpack from './config/build/buildWeback';
 import { BuildOptions, EnvVariables } from './config/build/types';
+import path from 'path';
+import getBuildWebpack from './config/build';
 
 const webpackConfig = (env: EnvVariables) => {
   const options: BuildOptions = {

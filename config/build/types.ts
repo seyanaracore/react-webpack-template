@@ -1,4 +1,5 @@
 import type { Configuration } from 'webpack';
+import type { Linter } from 'eslint';
 
 export type AppMode = Exclude<Configuration['mode'], 'none'>;
 
@@ -9,7 +10,7 @@ export type EnvVariables = {
 };
 
 export type GlobalEnv = {
-  __APP_MODE__: AppMode;
+  APP_MODE: AppMode;
 };
 
 export type BuildOptions = {
@@ -24,3 +25,6 @@ export type BuildOptions = {
     src: string;
   };
 };
+
+type ESLintConfigGlobals = NonNullable<Required<Linter.BaseConfig['globals']>>;
+export type EslintGlobal = Record<keyof GlobalEnv, ESLintConfigGlobals[keyof ESLintConfigGlobals]>;

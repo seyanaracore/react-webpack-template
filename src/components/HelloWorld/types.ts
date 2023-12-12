@@ -1,1 +1,1 @@
-export type HelloWorldsProps<T> = { msg: T; children?: React.ReactNode };
+export type HelloWorldsProps = { msg: string; children?: React.ReactNode };

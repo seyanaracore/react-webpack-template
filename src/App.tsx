@@ -1,7 +1,7 @@
+import HelloWorld from '@/components/HelloWorld';
 import { DefaultLayout } from './layouts';
-import HelloWorld from './components/HelloWorld';
 
-const App: React.FC = () => {
+function App() {
   return (
     <>
       <header>Header</header>
@@ -11,6 +11,6 @@ const App: React.FC = () => {
       <footer>footer</footer>
     </>
   );
-};
+}
 
 export default App;

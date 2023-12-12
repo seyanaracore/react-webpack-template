@@ -1,7 +1,7 @@
 type DefaultLayoutProps = { children: React.ReactNode };
 
-const DefaultLayout: React.FC<DefaultLayoutProps> = ({ children }) => {
+function DefaultLayout({ children }: DefaultLayoutProps) {
   return <main>{children}</main>;
-};
+}
 
 export default DefaultLayout;
