@@ -1,7 +1,18 @@
 // @ts-check
 /* eslint-disable @typescript-eslint/no-unused-vars */
 const { resolveExtensions } = require('./config/build/resolveExtensions');
-const { tsConfigAliases } = require('./config/build/alises');
+const { removeDeepPattern } = require('./config/build/removeDeepPattern');
+const tsConfigNode = require('./tsconfig.node.json');
+const tsConfigApp = require('./tsconfig.app.json');
+
+const pathsAliases = removeDeepPattern(Object.entries(tsConfigApp.compilerOptions.paths));
+
+const tsNodeIncludes = [
+  // Файлы
+  ...tsConfigNode.include.slice(0, -1),
+  // Папки
+  ...tsConfigNode.include.slice(-1).map((folderPath) => `${folderPath}/**`),
+];
 
 /** @typedef {import("eslint").Linter.BaseConfig} Config */
 
@@ -34,16 +45,19 @@ const config = {
     ecmaVersion: 'latest',
     sourceType: 'module',
     parser: '@typescript-eslint/parser',
-    project: './tsconfig.json',
+    project: './tsconfig.app.json',
   },
   overrides: [
     {
-      files: ['.eslintrc.js', '.prettierrc.js', './config/build/**'],
+      files: tsNodeIncludes,
       env: {
         node: true,
       },
       parserOptions: {
         project: './tsconfig.node.json',
+      },
+      rules: {
+        'import/no-extraneous-dependencies': OFF,
       },
     },
   ],
@@ -51,7 +65,7 @@ const config = {
   settings: {
     'import/resolver': {
       alias: {
-        map: tsConfigAliases,
+        map: pathsAliases,
         extensions: resolveExtensions,
       },
     },

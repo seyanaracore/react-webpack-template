@@ -1,5 +1,5 @@
-import { BuildOptions, EnvVariables } from './config/build/types';
 import path from 'path';
+import type { BuildOptions, EnvVariables } from './config/build/types';
 import getBuildWebpack from './config/build';
 
 const webpackConfig = (env: EnvVariables) => {

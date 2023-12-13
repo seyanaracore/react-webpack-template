@@ -4,7 +4,6 @@ import { DefinePlugin } from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
 import ReactRefreshWebpackPlugin from '@pmmmwh/react-refresh-webpack-plugin';
 import { EsbuildPlugin } from 'esbuild-loader';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import { BundleAnalyzerPlugin } from 'webpack-bundle-analyzer';
 import type { BuildOptions, GlobalEnv } from './types';
 

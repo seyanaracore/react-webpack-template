@@ -18,6 +18,7 @@ const getBuildRules = (options: BuildOptions): NonNullable<Configuration['module
     options: {
       // JavaScript version to compile to
       target: 'es2015',
+      // tsconfig: './tsconfig.app.json',
     },
   };
 

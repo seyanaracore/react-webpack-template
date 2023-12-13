@@ -1,12 +1,16 @@
 import type { Configuration } from 'webpack';
-import type { BuildOptions } from './types';
+import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin';
+import path from 'path';
 import { resolveExtensions } from './resolveExtensions';
 
-const getBuildResolvers = (options: BuildOptions): Configuration['resolve'] => ({
+const getBuildResolvers = (): Configuration['resolve'] => ({
   extensions: resolveExtensions,
-  alias: {
-    '@': options.paths.src,
-  },
+  plugins: [
+    new TsconfigPathsPlugin({
+      extensions: resolveExtensions,
+      configFile: path.resolve(__dirname, '../../tsconfig.app.json'),
+    }),
+  ],
 });
 
 export default getBuildResolvers;

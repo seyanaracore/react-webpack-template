@@ -19,7 +19,7 @@ const getBuildWebpack = (options: BuildOptions): Configuration => ({
     rules: getBuildRules(options),
   },
   devtool: options.mode !== 'production' && 'eval-source-map',
-  resolve: getBuildResolvers(options),
+  resolve: getBuildResolvers(),
   plugins: getBuildPlugins(options),
   devServer: getBuildDevServer(options),
   optimization: getBuildOptimization(),
