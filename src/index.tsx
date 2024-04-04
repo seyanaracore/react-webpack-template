@@ -2,7 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import './index.scss';
-import './test.css';
 import App from './App';
 
 const router = createBrowserRouter([
