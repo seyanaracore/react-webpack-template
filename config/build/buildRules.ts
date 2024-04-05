@@ -10,8 +10,11 @@ const getCssLoaders = (isProduction: boolean): RuleSetUseItem[] => [
     loader: 'css-loader',
     options: {
       modules: {
-        exportLocalsConvention: 'camelCase',
+        mode: 'local',
+        auto: true,
+        exportGlobals: true,
         localIdentName: isProduction ? '[local]__[hash:base64:8]' : '[path][name]__[local]',
+        exportLocalsConvention: 'camelCase',
       },
     },
   },

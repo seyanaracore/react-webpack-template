@@ -9,7 +9,8 @@
       "react": {
         "runtime": "automatic"
       }
-    }
+    },
+    "keepClassNames": true
   },
   "minify": true
   // "env" - в config/build/buildRules.ts
