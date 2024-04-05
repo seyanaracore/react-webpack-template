@@ -18,7 +18,7 @@ const getBuildWebpack = (options: BuildOptions): Configuration => ({
     chunkFilename: `js/chunks/${JS_FILE_NAME}`,
     publicPath: options.globalEnv.BASE_URL,
   },
-  optimization: getBuildOptimization(),
+  optimization: getBuildOptimization(options),
   module: {
     rules: getBuildRules(options),
   },
